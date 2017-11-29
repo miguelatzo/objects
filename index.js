@@ -40,4 +40,4 @@ app.listen(port);
 //esta linea solo aparece si no hay errores graves,
 //errores logicos pueden ser cometidos y el servidor puede
 //arrancar de todos modos
-console.log('Server running on http://localhost:/'=port); 
+console.log('Server running on http://localhost:'+port); 
