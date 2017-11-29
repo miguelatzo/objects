@@ -1,0 +1,18 @@
+{
+  "name": "api-reyes",
+  "version": "1.0.0",
+  "description": "API to fetch and post info into a pgsql objects database",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "author": "gersonzarate@gmail.com",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2",
+    "pg-promise": "^7.3.2"
+  }
+}
