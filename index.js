@@ -4,6 +4,9 @@ let express = require('express'); //declara la 'instancia' de express
 let bodyParser = require('body-parser'); //body parser ayuda a manejar el body de los post requests
 
 let cors = require('cors'); //ya que almacenaremos ligas externas a imagenes
+
+let fileUpload = require('express-fileupload');
+
 //headers the cross domain tipo XHTMLRequest son necesarios
 //lo hace mas facilito ;3
 /*/**************************************
@@ -11,6 +14,8 @@ let cors = require('cors'); //ya que almacenaremos ligas externas a imagenes
 //****************************************
 */
 let usuarios = require('./routes/usuarios');
+let inventarios = require('./routes/inventarios');
+let contenedoresEx = require('./routes/contenedores-ex');
 
 
 //**********************************************************
@@ -22,6 +27,7 @@ port = process.env.PORT || 3000;
 //inicializo express
 var app = express();
 
+app.use(fileUpload());
 //express toma estas 'instancias' para el parseo del body
 //en caso de recibirlo en formato json o urlencoded 
 app.use(bodyParser.json());
@@ -31,8 +37,11 @@ app.use(cors());
 //utilizo el script de rutas en routes/usuarios para la ruta
 //    /api/usuarios/????? checa ususarios.js
 app.use('/api/usuarios', usuarios);
-//IMPORTANTE PONER ESTA LINEA 33 DESPUES  DE LA 27 Y 28
-//it's kinda obvious why so google it.
+app.use('/api/inventarios', inventarios);
+app.use('/api/contenedoresex', contenedoresEx);
+
+app.use('/public', express.static('img'));
+
 
 //pongo en escucha a mi servidor express
 
