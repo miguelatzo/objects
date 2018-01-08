@@ -14,8 +14,8 @@ var pg_promise = require('pg-promise')(options);
 
 //kinde obvious what this is
 //var string_conex = 'postgres://postgres:postgres@localhost:5432/objects';
-var string_conex = 'postgres://postgres:postgres@localhost:5432/objects';
-//var string_conex = 'postgres://rgnrmlnkmylfnt:f5a6286dbcb6969792639a1723e6678bc50e705df85e4496a2813b6d4b9e3316@ec2-50-19-126-219.compute-1.amazonaws.com:5432/d2lfc9lok5phgj&ssl=required';
+//var string_conex = 'postgres://postgres:postgres@localhost:5432/objects&ssl';
+var string_conex = 'postgres://rgnrmlnkmylfnt:f5a6286dbcb6969792639a1723e6678bc50e705df85e4496a2813b6d4b9e3316@ec2-50-19-126-219.compute-1.amazonaws.com:5432/d2lfc9lok5phgj&ssl=required';
 
 //inicializamos niestro objeto de premisas para hacer ocnsultas
 var db = pg_promise(string_conex);
