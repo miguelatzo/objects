@@ -71,8 +71,29 @@ function deleteUsuario(req, res, next){
     });
 };
 
+function getUsuarios(req, res, next){
+
+  db.any('SELECT * FROM usuarios')
+    .then(function(data){
+      res.status(200)
+        .json({
+          status: true,
+          data: data
+        });
+
+    })
+    .catch(function(err){
+      res.status(200)
+        .json({
+          status: false
+        });
+    });
+};
+
+
 module.exports = {
   postUsuario: postUsuario,
   putUsuario: putUsuario,
-  deleteUsuario: deleteUsuario
+  deleteUsuario: deleteUsuario,
+  getUsuarios: getUsuarios
 };

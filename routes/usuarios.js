@@ -2,6 +2,9 @@ var cusuario = require('../queries/cusuarios');
 
 var router = require('./route-object');
 
+router.route('getusuarios')
+  .get(cusuario.getUsuarios);
+  
 router.route('/createusuario')
   .post(cusuario.postUsuario);
 
