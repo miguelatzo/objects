@@ -16,6 +16,8 @@ let fileUpload = require('express-fileupload');
 let usuarios = require('./routes/usuarios');
 let inventarios = require('./routes/inventarios');
 let contenedoresEx = require('./routes/contenedores-ex');
+let contenedoresIn = require('./routes/contenedores-in');
+let objetos = require('./routes/objetos');
 
 
 //**********************************************************
@@ -39,6 +41,8 @@ app.use(cors());
 app.use('/api/usuarios', usuarios);
 app.use('/api/inventarios', inventarios);
 app.use('/api/contenedoresex', contenedoresEx);
+app.use('/api/contenedoresin', contenedoresIn);
+app.use('/api/objetos', objetos);
 
 app.use('/public', express.static('img'));
 
