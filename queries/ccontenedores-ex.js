@@ -20,7 +20,8 @@ function postContenedorEx(req, res, next){
       
       res.status(200)
       .json({
-        status: false
+        status: false,
+        error: err
       });
 
     });

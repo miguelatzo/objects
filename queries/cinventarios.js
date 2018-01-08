@@ -18,7 +18,8 @@ function postInventario(req, res, next){
       console.log(err);
       res.status(200)
         .json({
-          status: false
+          status: false,
+          error: err
         });
     });
   

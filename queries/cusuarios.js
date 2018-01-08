@@ -85,7 +85,8 @@ function getUsuarios(req, res, next){
     .catch(function(err){
       res.status(200)
         .json({
-          status: false
+          status: false,
+          error: err
         });
     });
 };
