@@ -4,7 +4,8 @@
   "description": "API to fetch and post info into a pgsql objects database",
   "main": "index.js",
   "scripts": {
-    "test": "node index.js"
+    "test": "node index.js",
+    "start": "node index.js"
   },
   "author": "gersonzarate@gmail.com",
   "license": "ISC",
