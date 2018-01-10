@@ -26,7 +26,37 @@ function postInventario(req, res, next){
 };
 
 
+function getInventariosCompartidos(req, res, next){
+
+  console.log(req.body);
+
+  db.any('SELECT * FROM inventarios as i JOIN'+
+    ' contenedores_externos as cx ON i.id_inventario = cx.fid_inventario JOIN'+
+    ' contenedores_internos as ci ON cx.id_ct_externo = ci.fid_ct_externo JOIN'+
+    ' objetos as o ON ci.id_ct_interno = o.fid_ct_interno '+
+    ' WHERE i.compartido = true')
+    .then(function(data){
+
+      res.status(200)
+        .json({
+          status: true,
+          data: data
+        });
+    })
+    .catch(function(err){
+      console.log(err);
+      res.status(200)
+        .json({
+          status: false,
+          error: err
+        });
+    });
+  
+};
+
+
 
 module.exports = {
-  postInventario: postInventario
+  postInventario: postInventario,
+  getInventariosCompartidos: getInventariosCompartidos
 }

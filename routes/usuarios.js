@@ -1,7 +1,10 @@
 var cusuario = require('../queries/cusuarios');
 
 var router = require('./route-object');
-
+/*
+router.route('/getusuario/:id')
+  .get(cusuario.getUsuario);
+*/
 router.route('/getusuarios')
   .get(cusuario.getUsuarios);
 

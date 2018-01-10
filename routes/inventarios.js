@@ -7,4 +7,7 @@ let router = require('./route-object');
 router.route('/createinventario')
   .post(cinventarios.postInventario);
 
+router.route('/getinventarios')
+  .get(cinventarios.getInventariosCompartidos);
+
 module.exports = router;

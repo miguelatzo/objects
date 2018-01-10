@@ -83,6 +83,7 @@ function getUsuarios(req, res, next){
 
     })
     .catch(function(err){
+      console.log(err);
       res.status(200)
         .json({
           status: false,
