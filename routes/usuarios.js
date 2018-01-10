@@ -11,10 +11,10 @@ router.route('/getusuarios')
 router.route('/createusuario')
   .post(cusuario.postUsuario);
 
-router.route('/put/:nombre')
+router.route('/put/:id')
   .put(cusuario.putUsuario);
 
-router.route('/delete/:nombre')
-  .delete(cusuario.deleteUsuario);
+router.route('/delete/:id')
+  .all(cusuario.deleteUsuario);
 
 module.exports = router;

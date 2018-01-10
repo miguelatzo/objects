@@ -3,17 +3,12 @@ let db = require('./query-object');
 
 function postUsuario(req, res, next) {
   
-  let user = {
-    nombre: req.body.nombre,
-    contrasena: req.body.contrasena
-  };
-  
   db.none("INSERT INTO usuarios(nombre_usuario, contrasena_usuario)"+
-    "VALUES (${nombre}, ${contrasena})", user)
+    "VALUES (${nombre}, ${contrasena})", req.body)
     .then(function(data){
       res.status(200)
         .json({
-          status: 'Éxito',
+          status: true,
           mensaje: 'Usuario creado'
         });
     })
@@ -27,20 +22,16 @@ function postUsuario(req, res, next) {
 };
 
 function putUsuario(req, res, next){
-  let user = {
-    nombre: req.params.nombre,
-    contrasena: req.body.contrasena,
-    nuevoNombre: req.body.nnombre,
-    nuevaContrasena: req.body.ncontrasena
-  };
 
-  db.none('UPDATE usuarios SET nombre_usuario = ${nuevoNombre},'+
-    'contrasena_usuario = ${nuevaContrasena} '+
-    'WHERE nombre_usuario = ${nombre} AND contrasena_usuario = ${contrasena}', user)
+  req.body.id_usuario = req.params.id;
+
+  db.none('UPDATE usuarios SET nombre_usuario = ${nombre},'+
+    'contrasena_usuario = ${contrasena_usuario} '+
+    'WHERE id_usuario = ${id_usuario}', req.body)
     .then(function(){
       res.status(200)
         .json({
-          status: 'Éxito',
+          status: true,
           mensaje: 'Usuario modificado'
         });
     })
@@ -54,12 +45,11 @@ function putUsuario(req, res, next){
 
 function deleteUsuario(req, res, next){
 
-  var nombre = req.params.nombre;
-  db.result('DELETE FROM usuarios WHERE nombre_usuario = $1', nombre)
+  db.result('DELETE FROM usuarios WHERE id_usuario = $1', req.params.id)
     .then(function(result){
       res.status(200)
         .json({
-          status: 'Éxito',
+          status: true,
           mensaje: result
         });
     })
