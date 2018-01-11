@@ -16,8 +16,11 @@ function createObjeto(req, res, next){
       );
   }
 
-  db.none('INSERT INTO objetos (fid_contenedor_interno, nombre_objeto, props_objeto)'+
-    ' VALUES (${fid_contenedor_interno, ${nombre_objeto}, ${props_objeto})', req.body)
+  req.body.props_objeto = JSON.stringify(req.body.props_objeto);
+  console.log(req.body);
+
+  db.none('INSERT INTO objetos (fid_ct_interno, nombre_objeto, props_objeto)'+
+    ' VALUES (${fid_ct_interno}, ${nombre_objeto}, ${props_objeto})', req.body)
     .then(function(){
       
       res.status(200)
@@ -27,7 +30,7 @@ function createObjeto(req, res, next){
     
     })
     .catch(function(err){
-      
+      console.log(err);
       res.status(200)
       .json({
         status: false,

@@ -3,7 +3,8 @@ let db = require('./query-object');
 
 function postContenedorEx(req, res, next){
 
- 
+  //req.body.dimensiones_ct_externo = JSON.parse(req.body.dimensiones_ct_externo);
+
   console.log(req.body);
 
   db.none('INSERT INTO contenedores_externos (fid_inventario, nombre_ct_externo, dimensiones_ct_externo, props_ct_externo)'+
