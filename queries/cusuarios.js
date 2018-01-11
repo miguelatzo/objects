@@ -26,7 +26,8 @@ function postUsuario(req, res, next) {
 };
 
 function putUsuario(req, res, next){
-
+  
+  console.log(req.body);
   req.body.id_usuario = req.params.id;
 
   db.none('UPDATE usuarios SET nombre_usuario = ${nombre},'+
