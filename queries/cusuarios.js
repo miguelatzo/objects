@@ -2,9 +2,12 @@ let db = require('./query-object');
 
 
 function postUsuario(req, res, next) {
-  
-  db.none("INSERT INTO usuarios(nombre_usuario, contrasena_usuario)"+
-    "VALUES (${nombre}, ${contrasena})", req.body)
+  console.log('postusuario');
+  console.log(req.body);
+  req.body.id_usuario = parseInt(req.body.id_usuario);
+
+  db.none('INSERT INTO usuarios (id_usuario, nombre_usuario, contrasena_usuario)'+
+    ' VALUES (${id_usuario}, ${nombre_usuario}, ${contrasena_usuario})', req.body)
     .then(function(data){
       res.status(200)
         .json({
@@ -13,6 +16,7 @@ function postUsuario(req, res, next) {
         });
     })
     .catch(function(err){
+      console.log(err);
       res.json({
         status: 'Error',
         error: err
